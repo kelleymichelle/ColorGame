@@ -32,8 +32,19 @@ extension GameScene {
            
            if let player = self.player {
                let moveAction = SKAction.move(to: CGPoint(x: nextTrack.x, y: player.position.y), duration: 0.2)
+            
+                let up = directionArray[currentTrack + 1]
+            
                player.run(moveAction, completion: {
                    self.movingToTrack = false
+                
+                if self.currentTrack != 8 {
+                    self.player?.physicsBody?.velocity = up ? CGVector(dx: 0, dy: self.velocityArray[self.currentTrack]) : CGVector(dx: 0, dy: -self.velocityArray[self.currentTrack])
+                } else {
+                    self.player?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+                
+                
                })
                currentTrack += 1
                
@@ -53,6 +64,16 @@ extension GameScene {
             if node.position.y < -150 || node.position.y > self.size.height + 150 {
                 node.removeFromParent()
             }
+        }
+    }
+    
+    func movePlayerToStart() {
+        if let player = self.player {
+            player.removeFromParent()
+            self.player = nil
+            
+            self.createPlayer()
+            self.currentTrack = 0
         }
     }
     
