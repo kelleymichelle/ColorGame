@@ -91,14 +91,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == enemyCategory {
-            print("enemy hit")
+
+            movePlayerToStart()
         } else if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == targetCategory {
-            print("target hit")
+
+            nextLevel(playerPhysicsBody: playerBody)
+            
         }
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        
+        if let player = self.player {
+            if player.position.y > self.size.height || player.position.y < 0 {
+                movePlayerToStart()
+            }
+        }
+        
     }
 }
