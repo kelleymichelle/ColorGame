@@ -79,13 +79,13 @@ class GameScene: SKScene {
             let node = self.nodes(at: location).first
             
             if node?.name == "right" || node?.name == "rightimg" {
-                print("MOVE RIGHT")
+//                print("MOVE RIGHT")
                 moveToNextTrack()
             } else if node?.name == "up" || node?.name == "upimg" {
-                print("MOVE UP")
+//                print("MOVE UP")
                 moveVertically(up: true)
             } else if node?.name == "down" || node?.name == "downimg" {
-                print("MOVE DOWN")
+//                print("MOVE DOWN")
                 moveVertically(up: false)
             }
         }
