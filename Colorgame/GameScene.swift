@@ -39,6 +39,29 @@ class GameScene: SKScene {
       
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.previousLocation(in: self)
+            let node = self.nodes(at: location).first
+            
+            if node?.name == "right" || node?.name == "rightimg" {
+                print("MOVE RIGHT")
+            } else if node?.name == "up" || node?.name == "upimg" {
+                print("MOVE UP")
+            } else if node?.name == "down" || node?.name == "downimg" {
+                print("MOVE DOWN")
+            }
+        }
+    }
+    
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        <#code#>
+//    }
+//    
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        <#code#>
+//    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
