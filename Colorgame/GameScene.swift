@@ -39,6 +39,18 @@ class GameScene: SKScene {
       
     }
     
+    func moveVertically (up: Bool) {
+        if up {
+            let moveAction = SKAction.moveBy(x: 0, y: 3, duration: 0.01)
+            let repeatAction = SKAction.repeatForever(moveAction)
+            player?.run(repeatAction)
+        } else {
+            let moveAction = SKAction.moveBy(x: 0, y: -3, duration: 0.01)
+            let repeatAction = SKAction.repeatForever(moveAction)
+            player?.run(repeatAction)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.previousLocation(in: self)
@@ -48,19 +60,21 @@ class GameScene: SKScene {
                 print("MOVE RIGHT")
             } else if node?.name == "up" || node?.name == "upimg" {
                 print("MOVE UP")
+                moveVertically(up: true)
             } else if node?.name == "down" || node?.name == "downimg" {
                 print("MOVE DOWN")
+                moveVertically(up: false)
             }
         }
     }
     
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }
-//    
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player?.removeAllActions()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player?.removeAllActions()
+    }
     
     
     override func update(_ currentTime: TimeInterval) {
