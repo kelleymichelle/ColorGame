@@ -15,6 +15,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player:SKSpriteNode?
     var target:SKSpriteNode?
     
+    var timeLabel:SKLabelNode?
+    var scoreLabel:SKLabelNode?
+    var currentScore:Int = 0 {
+        didSet {
+            self.scoreLabel?.text = "SCORE: \(self.currentScore)"
+        }
+    }
+    
+    var remainingTime:TimeInterval = 60 {
+        didSet {
+            self.timeLabel?.text = "TIME: \(Int(self.remainingTime))"
+        }
+    }
+    
     var currentTrack = 0
     var movingToTrack = false
     
@@ -31,6 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     override func didMove(to view: SKView) {
         setupTracks()
+        createHUD()
+        launchGameTimer()
         createPlayer()
         createTarget()
         
@@ -113,6 +129,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if player.position.y > self.size.height || player.position.y < 0 {
                 movePlayerToStart()
             }
+        }
+        
+        if remainingTime <= 5 {
+            timeLabel?.fontColor = UIColor.red
         }
         
     }
