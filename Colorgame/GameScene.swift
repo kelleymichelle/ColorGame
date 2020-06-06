@@ -14,6 +14,11 @@ class GameScene: SKScene {
     var tracksArray: [SKSpriteNode]? = [SKSpriteNode]()
     var player:SKSpriteNode?
     
+    var currentTrack = 0
+    var movingToTrack = false
+    
+    let moveSound = SKAction.playSoundFileNamed("move.wav", waitForCompletion: false)
+    
     func setupTracks() {
         for i in 0...8 {
             if let track = self.childNode(withName: "\(i)") as? SKSpriteNode {
@@ -51,6 +56,23 @@ class GameScene: SKScene {
         }
     }
     
+    func moveToNextTrack() {
+        player?.removeAllActions()
+        movingToTrack = true
+        
+        guard let nextTrack = tracksArray?[currentTrack + 1].position else {return}
+        
+        if let player = self.player {
+            let moveAction = SKAction.move(to: CGPoint(x: nextTrack.x, y: player.position.y), duration: 0.2)
+            player.run(moveAction, completion: {
+                self.movingToTrack = false
+            })
+            currentTrack += 1
+            
+            self.run(moveSound)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.previousLocation(in: self)
@@ -58,6 +80,7 @@ class GameScene: SKScene {
             
             if node?.name == "right" || node?.name == "rightimg" {
                 print("MOVE RIGHT")
+                moveToNextTrack()
             } else if node?.name == "up" || node?.name == "upimg" {
                 print("MOVE UP")
                 moveVertically(up: true)
@@ -69,7 +92,10 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        player?.removeAllActions()
+        if !movingToTrack {
+            player?.removeAllActions()
+        }
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
