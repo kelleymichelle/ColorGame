@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var movingToTrack = false
     
     let moveSound = SKAction.playSoundFileNamed("move.wav", waitForCompletion: false)
+    var backgroundNoise: SKAudioNode!
     
     let trackVelocities = [180, 200, 250]
     var directionArray = [Bool]()
@@ -34,6 +35,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createTarget()
         
         self.physicsWorld.contactDelegate = self
+        
+        if let musicURL = Bundle.main.url(forResource: "background", withExtension: "wav") {
+            backgroundNoise = SKAudioNode(url: musicURL)
+            addChild(backgroundNoise)
+        }
         
         if let numberOfTracks = tracksArray?.count {
             for _ in 0...numberOfTracks {
@@ -91,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == enemyCategory {
-
+            self.run(SKAction.playSoundFileNamed("fail.wav", waitForCompletion: true))
             movePlayerToStart()
         } else if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == targetCategory {
 
