@@ -26,6 +26,10 @@
 		BC960892248C076A0021291E /* fireworks.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC960891248C076A0021291E /* fireworks.sks */; };
 		BC960896248C33E70021291E /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC960895248C33E70021291E /* GameElements.swift */; };
 		BC960898248C33FB0021291E /* GameFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC960897248C33FB0021291E /* GameFunctions.swift */; };
+		BC96089D248D47A10021291E /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC960899248D47A10021291E /* GameOverScene.sks */; };
+		BC96089E248D47A10021291E /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC96089A248D47A10021291E /* StartScene.swift */; };
+		BC96089F248D47A10021291E /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC96089B248D47A10021291E /* StartScene.sks */; };
+		BC9608A0248D47A10021291E /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC96089C248D47A10021291E /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		BC960891248C076A0021291E /* fireworks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fireworks.sks; sourceTree = "<group>"; };
 		BC960895248C33E70021291E /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		BC960897248C33FB0021291E /* GameFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFunctions.swift; sourceTree = "<group>"; };
+		BC960899248D47A10021291E /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		BC96089A248D47A10021291E /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		BC96089B248D47A10021291E /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		BC96089C248D47A10021291E /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +95,9 @@
 				BC960894248C324D0021291E /* Game Scenes */,
 				BC960893248C32360021291E /* Particles */,
 				BC96086C24882A870021291E /* Actions.sks */,
+				BC96089A248D47A10021291E /* StartScene.swift */,
 				BC96086E24882A870021291E /* GameScene.swift */,
+				BC96089C248D47A10021291E /* GameOverScene.swift */,
 				BC960895248C33E70021291E /* GameElements.swift */,
 				BC960897248C33FB0021291E /* GameFunctions.swift */,
 				BC96087224882A870021291E /* Main.storyboard */,
@@ -125,7 +135,9 @@
 		BC960894248C324D0021291E /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				BC96089B248D47A10021291E /* StartScene.sks */,
 				BC96086A24882A870021291E /* GameScene.sks */,
+				BC960899248D47A10021291E /* GameOverScene.sks */,
 			);
 			path = "Game Scenes";
 			sourceTree = "<group>";
@@ -197,10 +209,12 @@
 				BC96087624882A8A0021291E /* Assets.xcassets in Resources */,
 				BC96088924882B180021291E /* move.wav in Resources */,
 				BC960890248C06E60021291E /* pulse.sks in Resources */,
+				BC96089F248D47A10021291E /* StartScene.sks in Resources */,
 				BC96087924882A8A0021291E /* LaunchScreen.storyboard in Resources */,
 				BC96086D24882A870021291E /* Actions.sks in Resources */,
 				BC96088D24882B180021291E /* fail.wav in Resources */,
 				BC96088A24882B180021291E /* MenuHighscoreMusic.mp3 in Resources */,
+				BC96089D248D47A10021291E /* GameOverScene.sks in Resources */,
 				BC96088824882B180021291E /* powerUp.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +227,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC960898248C33FB0021291E /* GameFunctions.swift in Sources */,
+				BC96089E248D47A10021291E /* StartScene.swift in Sources */,
+				BC9608A0248D47A10021291E /* GameOverScene.swift in Sources */,
 				BC960896248C33E70021291E /* GameElements.swift in Sources */,
 				BC96086F24882A870021291E /* GameScene.swift in Sources */,
 				BC96087124882A870021291E /* GameViewController.swift in Sources */,
