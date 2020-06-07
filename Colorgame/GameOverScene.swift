@@ -2,8 +2,8 @@
 //  GameOverScene.swift
 //  ACGame
 //
-//  Created by Brian Advent on 16.06.17.
-//  Copyright © 2017 Brian Advent. All rights reserved.
+//  Created by Kelley Chaplain on 6/3/20.
+//  Copyright © 2020 Kelley Chaplain. All rights reserved.
 //
 
 import SpriteKit
@@ -38,6 +38,12 @@ class GameOverScene : SKScene {
             let node = self.atPoint(pos)
             
             if node == playButton {
+                
+                let transition = SKTransition.fade(withDuration: 1)
+                if let gameScene = SKScene(fileNamed: "GameScene") {
+                    gameScene.scaleMode = .aspectFit
+                    self.view?.presentScene(gameScene, transition: transition)
+                }
             
             }
         }

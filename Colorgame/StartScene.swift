@@ -2,8 +2,8 @@
 //  StartScene.swift
 //  ACGame
 //
-//  Created by Brian Advent on 30.05.17.
-//  Copyright © 2017 Brian Advent. All rights reserved.
+//  Created by Kelley Chaplain on 6/3/20.
+//  Copyright © 2020 Kelley Chaplain. All rights reserved.
 //
 
 import SpriteKit
