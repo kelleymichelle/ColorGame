@@ -113,6 +113,8 @@ extension GameScene {
     
     func gameOver() {
         
+        GameHandler.sharedInstance.saveGameStats()
+        
         self.run(SKAction.playSoundFileNamed("levelCompleted", waitForCompletion: true))
         let transition = SKTransition.fade(withDuration: 1)
         if let gameOverScene = SKScene(fileNamed: "GameOverScene") {
