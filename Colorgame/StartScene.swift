@@ -43,6 +43,7 @@ class StartScene: SKScene {
             if node == playButton {
                 let transition = SKTransition.fade(withDuration: 1)
                 gameScene = SKScene(fileNamed: "GameScene")
+                gameScene.scaleMode = .aspectFit
                 self.view?.presentScene(gameScene, transition: transition)
             }
         }
